@@ -25,6 +25,7 @@ int main(void)
 		
 		if(! (PIND & (1 << PIND2))) {
 			PORTB |= (1 << PB0);
+			
 		}
 		if(! (PIND & (1 << PIND3))) {
 			PORTB &= ~(1 << PB0);

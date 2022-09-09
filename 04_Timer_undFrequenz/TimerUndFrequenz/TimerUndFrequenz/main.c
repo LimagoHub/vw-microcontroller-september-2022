@@ -37,6 +37,7 @@ int main(void)
 
 	TIMSK |= (1 << OCIE0);    //Set the ISR COMPA vect
 
+	// Set Prescaler und starte den Timer
 	TCCR0 |= (1 << CS01) | (1 << CS00) ;
 	sei();         //enable interrupts
 

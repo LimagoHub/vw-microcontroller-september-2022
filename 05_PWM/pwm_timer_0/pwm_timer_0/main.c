@@ -8,31 +8,29 @@
 #define F_CPU 8000000UL
 #include "avr/io.h"
 #include <util/delay.h>
+#include "pwm.h"
 
 
-void PWM_init()
-{
-	/*set fast PWM mode with non-inverted output*/
-	TCCR0 = (1<<WGM00) | (1<<WGM01) | (1<<COM01) | (1<<CS00);
-	DDRB|=(1<<PB3);  /*set OC0 pin as output*/
-}
 
 
 int main ()
 {
-	unsigned char duty;
+	uint8_t duty;
 	
-	PWM_init();
+	pwm_init(NO_PRESCALING);
+	
 	while (1)
 	{
+		
+		
 		for(duty=0; duty<255; duty++)
 		{
-			OCR0=duty;  /*increase the LED light intensity*/
+			pwm_set_duty(duty);
 			_delay_ms(8);
 		}
 		for(duty=255; duty>1; duty--)
 		{
-			OCR0=duty;  /*decrease the LED light intensity*/
+			pwm_set_duty(duty) ;/*decrease the LED light intensity*/
 			_delay_ms(8);
 		}
 	}

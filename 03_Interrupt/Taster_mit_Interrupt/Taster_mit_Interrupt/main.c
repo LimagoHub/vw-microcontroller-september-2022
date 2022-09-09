@@ -11,32 +11,24 @@
 #include <util/delay.h>
 
 /*Interrupt Service Routine for INT0*/
-ISR(INT0_vect)
+ISR(INT0_vect) // Klingel
 {
 	PORTB=0xFF;	
-	
 }
 
 ISR(INT1_vect)
 {
 	PORTB=0;
-
 }
-
-
 int main(void)
 {
-	
 	DDRB=0xFF;		/* Make PORTB as output PORT*/
 	PORTB=0;
 	DDRD=0;			/* PORTD as input */
 	PORTD=0xFF;		/* Make pull up high */
-	
-	GICR = (1<<INT0) | (1<<INT1);		/* Enable INT0 und int1*/
+	GICR = (1<<INT0) | (1<<INT1);		/* Enable INT0 und int1 (Briefträger Bescheid sagen)*/
 	MCUCR = (1<<ISC01)  | (1<<ISC11) ;  /* Trigger INT0 on rising edge */
-	
 	sei();			/* Enable Global Interrupt */
 	// cli();
-	
 	while(1){}
 }

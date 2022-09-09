@@ -18,8 +18,7 @@
 	#include <util/delay.h>
 
 
-	#define LCD_DDR DDRD
-	#define LCD_PORT PORTD
+	
 	#define RS  2
 	#define E   3
 	#define DB4 4
@@ -36,6 +35,8 @@
 	#define CLEAR 0b00000001
 	#define ON 0b00001110
 	#define CURSOR_HOME 0x02
+	#define LCD_BACKLIGHT 0x08
+	#define I2C_ADRESSE 0x27
 
 	void lcd_enable(void);
 	void lcd_putc ( volatile uint8_t c );
@@ -45,6 +46,8 @@
 	void lcd_clear(void);
 	void lcd_home(void);
 	void set_cursor(uint8_t x, uint8_t y);
+
+
 
 	
 

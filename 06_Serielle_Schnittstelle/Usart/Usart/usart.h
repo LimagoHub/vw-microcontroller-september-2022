@@ -18,10 +18,6 @@
 
 
 
-
-
-
-
 void usart_sendChar(char value);
 void usart_sendString(char *message);
 void usart_sendStringNewLine(char *message);
