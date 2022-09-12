@@ -8,7 +8,7 @@
 
 
 
-void usart_Init() { // 1000 wird übergeben
+void usart_Init() {
 	
 	
 	/*Set baud rate */
@@ -16,7 +16,7 @@ void usart_Init() { // 1000 wird übergeben
 	UBRRL = MYUBRR;
 	
 	UCSRB |= (1 << RXEN) | (1 << TXEN);      // Enable receiver and transmitter
-	UCSRB |= (1 << RXCIE);                    // Enable reciever interrupt
+	UCSRB |= (1 << RXCIE);                    // Enable receiver interrupt
 	UCSRC |= (1 << UCSZ1) | (1 << UCSZ0) | (1 << URSEL);    // Set frame: 8data, 1 stp
 
 	
@@ -30,7 +30,7 @@ void usart_sendChar(char value) {
 
 void usart_sendString(char *message) {
 	while(*message)
-	usart_sendChar(*message ++);
+		usart_sendChar(*message ++);
 }
 
 void usart_sendStringNewLine(char *message) {
@@ -38,4 +38,14 @@ void usart_sendStringNewLine(char *message) {
 	usart_sendString("\r\n");
 }
 
+char usart_receiveChar(){
+	while( ! (UCSRA & (1 << RXC))){
+		// Passiert nix
+	}// Wartet bis alle bits vollständig empfangen sind
+	return UDR;
+}
 
+ISR(USART_RXC_vect) {
+	
+	usart_sendChar(UDR);
+}

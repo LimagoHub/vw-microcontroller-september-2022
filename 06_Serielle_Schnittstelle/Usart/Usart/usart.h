@@ -6,8 +6,7 @@
  */ 
 
 
-#ifndef USART_H_
-#define USART_H_
+#pragma once
 #include <avr/io.h>
 #include <stdint.h>                     // needed for uint8_t
 //#include <stdlib.h>
@@ -21,8 +20,8 @@
 void usart_sendChar(char value);
 void usart_sendString(char *message);
 void usart_sendStringNewLine(char *message);
+char usart_receiveChar();
 void usart_Init() ;
 
 
 
-#endif /* USART_H_ */

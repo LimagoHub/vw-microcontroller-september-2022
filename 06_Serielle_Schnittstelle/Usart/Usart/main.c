@@ -10,30 +10,30 @@
 //#include "usart.h"
 #include <util/delay.h>
 #include "usart.h"
-
- 
+#include <avr/interrupt.h>
+ #include <stdlib.h>
 
 int main(void)
 {
 	
 	
 	usart_Init();
+	sei();
+	//uint8_t messwert = 10;
+	//
+	char buffer[7];
+	//itoa(messwert,buffer,10);
+	//
+	//usart_sendStringNewLine(buffer);
+	
 	
     while (1) 
     {
-		for(char c = 'A'; c <= 'Z'; c++){
-			usart_sendChar(c);
-			
+		for(int i = 0 ; i <= 10000; i+=1000) {
+			itoa(i, buffer, 10);
+			usart_sendStringNewLine(buffer);
 		}
-		
-	for(char x = 0; x <= 10; x++){
-		usart_sendChar(x + '0');
-		
-	}
-		
-		usart_sendStringNewLine("");
 		_delay_ms(500);
-		
 		
     }
 }
