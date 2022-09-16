@@ -15,6 +15,12 @@ int main(void)
 	lcd_puts("Hallo");
     while (1) 
     {
+		lcd_puts("Welt");
+		_delay_ms(1000);
+		lcd_command(CLEAR);
+		lcd_puts("Hallo");
+		_delay_ms(1000);
+		lcd_command(CLEAR);
     }
 }
 

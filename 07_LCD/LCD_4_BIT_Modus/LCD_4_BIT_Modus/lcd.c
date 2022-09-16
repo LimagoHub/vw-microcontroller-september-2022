@@ -18,7 +18,7 @@ void lcd_puts ( char * s ) {
 
 	
 	while (*s)
-	lcd_putc(*s++);
+		lcd_putc(*s++);
 
 }
 

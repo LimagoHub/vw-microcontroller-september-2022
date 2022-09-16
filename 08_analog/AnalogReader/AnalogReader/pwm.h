@@ -6,6 +6,7 @@
  */ 
 #pragma once
 #include <avr/io.h>
+
 #define NO_PRESCALING (1<<CS00) 
 #define PRESCALE_1024 (1<<CS02)|(1<<CS00)
 

@@ -27,9 +27,9 @@ uint16_t ADC_Read(uint8_t channel)
 	ADCSRA |= (1<<ADSC);		/* Start conversion */
 	while((ADCSRA&(1<<ADIF))==0);	/* Monitor end of conversion interrupt */
 	
-	_delay_ms(10);
+	_delay_us(10);
 	result =  ADCL;		/* Read lower byte*/
 	result  |= (ADCH << 8);	
-	_delay_ms(10);	
+		
 	return result;			/* Return digital value*/
 }

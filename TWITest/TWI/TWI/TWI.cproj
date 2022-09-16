@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>AnalogReader</AssemblyName>
-    <Name>AnalogReader</Name>
-    <RootNamespace>AnalogReader</RootNamespace>
+    <AssemblyName>TWI</AssemblyName>
+    <Name>TWI</Name>
+    <RootNamespace>TWI</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -120,27 +120,24 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="adc.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="adc.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="pwm.c">
+    <Compile Include="utility\twi.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="pwm.h">
+    <Compile Include="utility\twi.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="usart.c">
+    <Compile Include="wire.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="usart.h">
+    <Compile Include="wire.h">
       <SubType>compile</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="utility" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

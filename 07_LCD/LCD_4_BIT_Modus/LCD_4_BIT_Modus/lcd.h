@@ -18,8 +18,8 @@
 	#include <util/delay.h>
 
 
-	#define LCD_DDR DDRD
-	#define LCD_PORT PORTD
+	#define LCD_DDR DDRB
+	#define LCD_PORT PORTB
 	#define RS  2
 	#define E   3
 	#define DB4 4
